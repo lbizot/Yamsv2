@@ -7,11 +7,11 @@ int main(int argc, char **argv)
     ouvrir_fenetre(800,600);
     afficher_texte("YAM's!",100,p,sdlRed);
     actualiser();
-    attente(1000);
+    attente(5000);
     Point afficheimage={0, 0};
-    afficher_image("D://Documents\ Travail/2019-2020\ ESIREM\ Dijon/semestre\ 6/Projet/Yams/files/image/fondyams.bmp",afficheimage);
+    afficher_image("./files/image/fondyams.bmp",afficheimage);
     actualiser();
-    attente(2000);
+    attente(5000);
     fermer_fenetre();
     return(0);
     }

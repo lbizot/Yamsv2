@@ -267,7 +267,7 @@ void afficher_texte(std::string texte, int taille, Point coin, SDL_Color couleur
 {
     if (texte[0] != '\0' && !TTF_Init())
     {
-        sdlSurface= TTF_RenderText_Blended(TTF_OpenFont("D://Documents\ Travail/2019-2020\ ESIREM\ Dijon/semestre\ 6/Projet/Yams/files/verdana.ttf", taille), texte.c_str(), couleur);
+        sdlSurface= TTF_RenderText_Blended(TTF_OpenFont("./files/verdana.ttf", taille), texte.c_str(), couleur);
         SDL_Rect position;
         position.x = coin.x;
         position.y=  coin.y;
