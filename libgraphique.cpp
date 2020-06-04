@@ -4,7 +4,7 @@
 
 
 #include "libgraphique.h"
-
+#include <string.h>
 
 ////////////////////////////////////////////////////////////////////////////////
 // 0. variables globales et macros
@@ -265,17 +265,26 @@ Point deplacement_souris_a_eu_lieu()
 //affiche du texte de taille de police donnée ; coin est le coin haut gauche du texte
 void afficher_texte(std::string texte, int taille, Point coin, SDL_Color couleur)
 {
-    if (texte[0] != '\0' && !TTF_Init())
+	TTF_Init();
+    if (texte[0] != '\0')
     {
-        sdlSurface= TTF_RenderText_Blended(TTF_OpenFont("./files/verdana.ttf", taille), texte.c_str(), couleur);
+		
+			
+       SDL_Surface* sdlSurface= TTF_RenderText_Blended(TTF_OpenFont("./files/verdana.ttf", taille), texte.c_str(), couleur);
+		SDL_Texture* texture=SDL_CreateTextureFromSurface(sdlRenderer,sdlSurface);
         SDL_Rect position;
         position.x = coin.x;
         position.y=  coin.y;
-        sdlTexture = SDL_CreateTextureFromSurface(sdlRenderer, sdlSurface);
-        SDL_RenderCopy(sdlRenderer, sdlTexture, NULL, &position);
-        SDL_RenderPresent(sdlRenderer);
-        SDL_FreeSurface(sdlSurface);
+		SDL_QueryTexture(texture,nullptr,nullptr,&position.w,&position.h);
+		SDL_FreeSurface(sdlSurface);
+		SDL_RenderCopy(sdlRenderer,texture,nullptr,&position);
+		SDL_RenderPresent(sdlRenderer);
+		SDL_RenderClear(sdlRenderer); 
+		SDL_DestroyTexture(texture);
+        
+		
     }
+	
 }
 
 ////////////////////////////////////////////////////////////////////////////////
