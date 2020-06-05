@@ -4,7 +4,7 @@
 
 
 #include "libgraphique.h"
-#include <string.h>
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // 0. variables globales et macros
@@ -84,10 +84,10 @@ void _test_arret() {
 void actualiser(){
     SDL_PollEvent(&lastevent) ;
     _test_arret();
-    SDL_UpdateTexture(sdlTexture, NULL, myPixels, LARGEUR * sizeof (unsigned int));
-    SDL_RenderClear(sdlRenderer);
-    SDL_RenderCopy(sdlRenderer, sdlTexture, NULL, NULL);
-    SDL_RenderPresent(sdlRenderer);
+    //SDL_UpdateTexture(sdlTexture, NULL, myPixels, LARGEUR * sizeof (unsigned int));
+    //SDL_RenderClear(sdlRenderer);
+   // SDL_RenderCopy(sdlRenderer, sdlTexture, NULL, NULL);
+    //SDL_RenderPresent(sdlRenderer);
 }
 
 
@@ -95,17 +95,37 @@ void actualiser(){
 // nom est une chaine de caracteres qui est le nom (complet) du fichier image
 // coin est le coin haut, gauche voulu pour l'image à afficher dans l'ecran
 void afficher_image(std::string nom, Point coin){
-    sdlSurface = SDL_LoadBMP(nom.c_str()); ;
+    sdlSurface = SDL_LoadBMP(nom.c_str());
     SDL_Rect position;
     position.x = coin.x;
-    position.y=  coin.y;
+    position.y = coin.y;
+    position.w = sdlSurface->w;
+    position.h = sdlSurface->h;
     sdlTexture = SDL_CreateTextureFromSurface(sdlRenderer, sdlSurface);
     SDL_RenderCopy(sdlRenderer, sdlTexture, NULL, &position);
     SDL_RenderPresent(sdlRenderer);
     SDL_FreeSurface(sdlSurface);
 }
+/*
+void changer_pixel(Point pix, Couleur couleur) {
+    if ((0 <= pix.x) && (pix.x < LARGEUR) && (0 <= pix.y ) && (pix.y < HAUTEUR))
+    {
+        *( (Uint32*)ecran->pixels + pix.y * largeur_ecran + pix.x ) = couleur ;
+    }
+}
 
 
+void dessiner_rectangle(Point coin, int largeur, int hauteur, Couleur couleur) {
+    Point p ;
+    int bord_droit = coin.x + largeur ;
+    int bord_bas = coin.y + hauteur ;
+    for (p.x = coin.x; p.x < bord_droit ; ++(p.x)) {
+        for (p.y = coin.y ; p.y  < bord_bas ; ++(p.y) ) {
+            changer_pixel(p, couleur);
+        }
+    }
+}
+*/
 ////////////////////////////////////////////////////////////////////////////////
 // 3. Gestion des événements
 
@@ -268,23 +288,23 @@ void afficher_texte(std::string texte, int taille, Point coin, SDL_Color couleur
 	TTF_Init();
     if (texte[0] != '\0')
     {
-		
-			
-       SDL_Surface* sdlSurface= TTF_RenderText_Blended(TTF_OpenFont("./files/verdana.ttf", taille), texte.c_str(), couleur);
+        //sdlSurface= TTF_RenderText_Blended(TTF_OpenFont("./files/verdana.ttf", taille), texte.c_str(), couleur);
+        SDL_Surface* sdlSurface= TTF_RenderText_Blended(TTF_OpenFont("./files/verdana.ttf", taille), texte.c_str(), couleur);
 		SDL_Texture* texture=SDL_CreateTextureFromSurface(sdlRenderer,sdlSurface);
+
         SDL_Rect position;
         position.x = coin.x;
         position.y=  coin.y;
-		SDL_QueryTexture(texture,nullptr,nullptr,&position.w,&position.h);
+        //sdlTexture = SDL_CreateTextureFromSurface(sdlRenderer, sdlSurface);
+        //SDL_RenderCopy(sdlRenderer, sdlTexture, NULL, &position);
+        //SDL_RenderPresent(sdlRenderer);
+        //SDL_FreeSurface(sdlSurface);
+        SDL_QueryTexture(texture,nullptr,nullptr,&position.w,&position.h);
 		SDL_FreeSurface(sdlSurface);
 		SDL_RenderCopy(sdlRenderer,texture,nullptr,&position);
-		SDL_RenderPresent(sdlRenderer);
-		SDL_RenderClear(sdlRenderer); 
+		SDL_RenderPresent(sdlRenderer); 
 		SDL_DestroyTexture(texture);
-        
-		
     }
-	
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -294,4 +314,3 @@ void attente(int duree_ms)
 {
     SDL_Delay(duree_ms);
 }
-
