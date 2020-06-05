@@ -70,11 +70,6 @@ void actualiser();
 // nom est une chaine de caracteres qui est le nom (complet) du fichier image
 // coin est le coin haut, gauche voulu pour l'image à afficher dans l'ecran
 void afficher_image(std:: string nom, Point coin);
-/*
-void changer_pixel(Point pix, Couleur couleur);
-
-void dessiner_rectangle(Point coin, int largeur, int hauteur, Couleur couleur);
-*/
 
 ////////////////////////////////////////////////////////////////////////////////
 // 3. Gestion des événements

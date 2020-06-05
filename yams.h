@@ -107,40 +107,40 @@ int DecisionJoueur2(Point p1)
 void cleanScore_jeu(Point jeu)
     {
     jeu.y -= 33;
-    afficher_image("./files/image/carre_jaune.bmp",jeu);
+    afficher_image("./image/carre_jaune.bmp",jeu);
     jeu.y += 33;
-    afficher_image("./files/image/carre_jaune.bmp",jeu);
+    afficher_image("./image/carre_jaune.bmp",jeu);
     jeu.y += 33 * 8;
     jeu.y += 4;
-    afficher_image("./files/image/carre_jaune.bmp",jeu);
+    afficher_image("./image/carre_jaune.bmp",jeu);
     jeu.y += 33;
-    //dessiner_rectangle(jeu,50,33,totaux);
+    dessiner_rectangle(jeu,50,33,totaux);
     actualiser();
     }
 void cleanScore_jeu2(Point jeu)
     {
     jeu.x += 50;
     jeu.y -= 33;
-    afficher_image("./files/image/carre_jaune.bmp",jeu);
+    afficher_image("./image/carre_jaune.bmp",jeu);
     jeu.y += 33;
-    afficher_image("./files/image/carre_jaune.bmp",jeu);
+    afficher_image("./image/carre_jaune.bmp",jeu);
     jeu.y += 33 * 8;
     jeu.y += 4;
-    afficher_image("./files/image/carre_jaune.bmp",jeu);
+    afficher_image("./image/carre_jaune.bmp",jeu);
     jeu.y += 33;
-    //dessiner_rectangle(jeu,50,33,totaux);
+    dessiner_rectangle(jeu,50,33,totaux);
     actualiser();
     }
 
 void cleanScore_tmp()
     {
     Point efface_colonne = { 102 , 0 };
-    afficher_image("./files/image/colonne.bmp",efface_colonne);
+    afficher_image("./image/colonne.bmp",efface_colonne);
     }
 
 void effaceDesLock_graph(Point p1)
     {
-    //dessiner_rectangle(p1,60,60,plateau);
+    dessiner_rectangle(p1,60,60,plateau);
     }
 
 Point RenouvellementDes1(Des d1, Point p1)
@@ -397,7 +397,7 @@ Main combi(Main m1)
         }
 
     sprintf(score_graph,"%d",s_total);
-    afficher_texte(score_graph,20,m1.cordnum[7],sdlBlue);
+    //afficher_texte(score_graph,20,m1.cordnum[7],sdlBlue);
     afficher_texte(score_graph,20,m1.cordnum[8],sdlRed);
     printf("sous total = %d \n",s_total);
     return m1;
@@ -420,7 +420,7 @@ Des initDes(Des dice)
     {
     if(dice.stat != 1)
         {
-        dice.valeurDes = (int)rand()%6+1;
+        dice.valeurDes = rand()%6+1;
         dice.stat = 0;
         }
     return dice;
@@ -436,27 +436,27 @@ void afficheDes_graph(int valeurd, Point carre)
     {
     if(valeurd == 1)
         {
-        afficher_image("./files/image/de1.bmp",carre);
+        afficher_image("./image/de1.bmp",carre);
         }
     else if(valeurd == 2)
         {
-        afficher_image("./files/image/de2.bmp",carre);
+        afficher_image("./image/de2.bmp",carre);
         }
     else if(valeurd == 3)
         {
-        afficher_image("./files/image/de3.bmp",carre);
+        afficher_image("./image/de3.bmp",carre);
         }
     else if(valeurd == 4)
         {
-        afficher_image("./files/image/de4.bmp",carre);
+        afficher_image("./image/de4.bmp",carre);
         }
     else if(valeurd == 5)
         {
-        afficher_image("./files/image/de5.bmp",carre);
+        afficher_image("./image/de5.bmp",carre);
         }
     else
         {
-        afficher_image("./files/image/de6.bmp",carre);
+        afficher_image("./image/de6.bmp",carre);
         }
     }
 
