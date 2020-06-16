@@ -55,56 +55,16 @@ void actualiser();
 // nom est une chaine de caracteres qui est le nom (complet) du fichier image
 // coin est le coin haut, gauche voulu pour l'image à afficher dans l'ecran
 void afficher_image(std:: string nom, Point coin);
-/*
-void changer_pixel(Point pix, Couleur couleur);
-*/
+
 void dessiner_rectangle(Point coin, int largeur, int hauteur, SDL_Color couleur);
 
 
 ////////////////////////////////////////////////////////////////////////////////
 // 3. Gestion des événements
 
-// renvoie le code SDLK de la prochaine touche pressée
-// fonction bloquante
-int attendre_touche(void);
-
-// renvoie le code SDLK de la prochaine touche pressée avant une durée donnée
-// en milisecondes, fonction bloquante durant un certain temps.
-// Renvoie 0 si aucune touche n'a été pressée.
-int attendre_touche_duree(int);
-
 // renvoie les coordonnees du prochain clic (gauche ou droite) de souris
 // fonction bloquante
 Point attendre_clic() ;
-
-//comme la fonction attendre clic, mais on ajoute un signe
-//négatif devant les coordonnées du point si c'est un clic droit
-Point attendre_clic_gauche_droite() ;
-
-
-////////////////////////////////////////////////////////////////////////////////
-// 3 bis : fonctions optionnelles pour les événements, non bloquantes
-
-//reinitialise la mémoire des événements à 0
-void reinitialiser_evenements(void);
-
-// memorise les evenements ayant eu lieu depuis la derniere
-// reinitialisation
-void traiter_evenements(void);
-
-// indique si la touche de code SDL en question a été pressée
-// entre la derniere reinitialisation et le dernier traitement
-int touche_a_ete_pressee(int);
-
-//renvoie les coordonnees du dernier clic obtenu
-// entre la derniere reinitialisation et le dernier traitement
-// Point (-1,-1) si pas de clic
-Point clic_a_eu_lieu();
-
-// renvoie un point de coordonnées relatives souris obtenu
-// entre la derniere reinitialisation et le dernier traitement
-// (0,0) au lancement, dernière position reçue si sortie de fenêtre
-Point deplacement_souris_a_eu_lieu();
 
 ////////////////////////////////////////////////////////////////////////////////
 // 4. Affichage de texte

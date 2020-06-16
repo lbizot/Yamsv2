@@ -159,7 +159,6 @@ int main(int argc, char **argv)
         {
         fscanf(fichier,"%d",&score_jeu_total);
         lastscore = score_final;
-        printf("LAST SCORE : %d \n",score_jeu_total);
         sprintf(score_graph,"LAST HIGH SCORE : %d",score_jeu_total);
         afficher_texte(score_graph,15,o1,sdlWhite);
         }
@@ -187,7 +186,6 @@ int main(int argc, char **argv)
             if(RenouvelerDes(clic) == 1) // clic sur lancer les dés
                 {
                 
-                printf("dans la boucle for \n");
                 
                 for(k = 0 ; k < 8 ; k++)
                     {
@@ -218,7 +216,6 @@ int main(int argc, char **argv)
                 }
             while(RenouvelerDes(clic) != 1) // TACHE A FAIRE : CREER LA POSSIBILITE DANNULER NOTRE CHOIX DE SELECTION DE DéS
                 {
-                printf("dans la boucle while \n");
                 
                 if( (clic.x > 440 && clic.x < 500) && (clic.y > 200 && clic.y < 260) && d1.stat == 0)
                     {
@@ -227,7 +224,6 @@ int main(int argc, char **argv)
                     p1.y += 313;
                     afficheDes_graph(d1.valeurDes, p1);
                     d1.stat = 1;
-                    printf("statut dé = %d \n",d1.stat);
                     sauv[i] = 1;
                     } 
                 else if( (clic.x > 560 && clic.x < 620) && (clic.y > 200 && clic.y < 260) && d2.stat == 0)
@@ -237,7 +233,6 @@ int main(int argc, char **argv)
                     p2.y += 313;
                     afficheDes_graph(d2.valeurDes, p2);
                     d2.stat = 1;
-                    printf("statut dé = %d \n",d2.stat);
                     sauv[i] = 1;
                     }
                 else if( (clic.x > 400 && clic.x < 460) && (clic.y > 300 && clic.y < 360) && d3.stat == 0)
@@ -247,7 +242,6 @@ int main(int argc, char **argv)
                     p3.y += 213;
                     afficheDes_graph(d3.valeurDes, p3);
                     d3.stat = 1;
-                    printf("statut dé = %d \n",d3.stat);
                     sauv[i] = 1;    
                     }
                 else if( (clic.x > 500 && clic.x < 560) && (clic.y > 300 && clic.y < 360) && d4.stat == 0)
@@ -257,7 +251,6 @@ int main(int argc, char **argv)
                     p4.y += 213;
                     afficheDes_graph(d4.valeurDes, p4);
                     d4.stat = 1;
-                    printf("statut dé = %d \n",d4.stat);
                     sauv[i] = 1;    
                     }
                 else if( (clic.x > 600 && clic.x < 660) && (clic.y > 300 && clic.y < 360) && d5.stat == 0)
@@ -267,7 +260,6 @@ int main(int argc, char **argv)
                     p5.y += 213;
                     afficheDes_graph(d5.valeurDes, p5);
                     d5.stat = 1;
-                    printf("statut dé = %d \n",d5.stat);
                     sauv[i] = 1;    
                     }
                 else
@@ -286,7 +278,6 @@ int main(int argc, char **argv)
                     p1.y -= 313;
                     afficheDes_graph(d1.valeurDes, p1);
                     d1.stat = 0;
-                    printf("statut dé = %d \n",d1.stat);
                     } 
                 else if( (clic.x > 410 && clic.x < 470) && (clic.y > 513 && clic.y < 573) && (d2.stat == 1 && sauv[i]==1) )
                     {
@@ -295,7 +286,6 @@ int main(int argc, char **argv)
                     p2.y -= 313;
                     afficheDes_graph(d2.valeurDes, p2);
                     d2.stat = 0;
-                    printf("statut dé = %d \n",d2.stat);
                     }
                 else if( (clic.x > 500 && clic.x < 560) && (clic.y > 513 && clic.y < 573) && (d3.stat == 1 && sauv[i]==1) )
                     {
@@ -304,7 +294,6 @@ int main(int argc, char **argv)
                     p3.y -= 213;
                     afficheDes_graph(d3.valeurDes, p3);
                     d3.stat = 0;
-                    printf("statut dé = %d \n",d3.stat);    
                     }
                 else if( (clic.x > 590 && clic.x < 650) && (clic.y > 513 && clic.y < 573) && (d4.stat == 1 && sauv[i]==1) )
                     {
@@ -313,7 +302,6 @@ int main(int argc, char **argv)
                     p4.y -= 213;
                     afficheDes_graph(d4.valeurDes, p4);
                     d4.stat = 0;
-                    printf("statut dé = %d \n",d4.stat);    
                     }
                 else if( (clic.x > 683 && clic.x < 743) && (clic.y > 513 && clic.y < 573) && (d5.stat == 1 && sauv[i]==1) )
                     {
@@ -322,7 +310,6 @@ int main(int argc, char **argv)
                     p5.y -= 213;
                     afficheDes_graph(d5.valeurDes, p5);
                     d5.stat = 0;
-                    printf("statut dé = %d \n",d5.stat);    
                     }
                 else
                     {
@@ -338,11 +325,7 @@ int main(int argc, char **argv)
                 }
                 if(d1.stat == 1 && d2.stat == 1 && d3.stat == 1 && d4.stat == 1 && d5.stat == 1 ) break;
     
-                printf("EVERYTHING GOOD \n");   
             }
-            printf("fin de la boucle for \n");
-            printf("ON EST OBLIGER DE CLIQUER SUR LE CARRE POUR SORTIR DE LA BOUCLE FOR... SEUL INCONVENIANT\n");
-            printf("%d , %d , %d , %d , %d \n",d1.valeurDes,d2.valeurDes,d3.valeurDes,d4.valeurDes,d5.valeurDes);
             m1.tab[0] = d1.valeurDes;
             //printf("TEST = %d \n",j1.m1[0].tab[0]);
             m1.tab[1] = d2.valeurDes;
@@ -352,7 +335,6 @@ int main(int argc, char **argv)
             m1 = compte_combi(m1);
             m1 = combi(m1);
             actualiser();
-            printf("Choix de la case \n");
             
     //****************** SAUVEGARDE DU SCORE JOUEUR 1 *************************
             if(tour_joueur%2 == 0)
@@ -360,7 +342,6 @@ int main(int argc, char **argv)
                 choix_score = attendre_clic();
                 do
                     {
-                    printf("dans la boucle while sauvegarde \n");
                     if( (choix_score.x > 155 && choix_score.x < 205) && (choix_score.y > 32 && choix_score.y < 65) && case1_1 == 0)
                         {
                         sprintf(score_graph,"%d",m1.total_graph[1]);
@@ -485,9 +466,6 @@ int main(int argc, char **argv)
                     afficher_texte(scorejeu_graph,20,psauvegarde7,sdlRed);
                 score_jeu_i2 = t_case7_1 + t_case8_1 + t_case9_1 + t_case10_1 + t_case11_1 + t_case12_1 + t_case15_1;
                 score_jeu_total = score_jeu_intermediaire + score_jeu_i2;
-                printf("score jeu intermediaire joueur 1 = %d \n",score_jeu_intermediaire);
-                printf("score jeu 2 joueur 1 = %d \n",score_jeu_i2);
-                printf("score jeu total joueur 1 = %d \n",score_jeu_total);
                 sprintf(scorejeu_graph,"%d",score_jeu_intermediaire);
                 cleanScore_jeu(total_jeu);
                 afficher_texte(scorejeu_graph,20,psauvegarde7,sdlGris);
@@ -501,7 +479,6 @@ int main(int argc, char **argv)
                 }
             else // JOUEUR 2 A PARTIR D'ICI
                 {
-                printf("dans le else \n");
                 choix_score = attendre_clic();
                 do
                     {
@@ -656,9 +633,6 @@ int main(int argc, char **argv)
                     afficher_texte(scorejeu_graph,20,psauvegarde7,sdlRed);
                 score_jeu_i2_2 = t_case7_2 + t_case8_2 + t_case9_2 + t_case12_2 + t_case10_2 + t_case11_2 + t_case15_2;
                 score_jeu_total_2 = score_jeu_intermediaire_2 + score_jeu_i2_2;
-                printf("score jeu intermediaire joueur 2 = %d \n",score_jeu_intermediaire_2);
-                printf("score jeu 2 joueur 2 = %d \n",score_jeu_i2_2);
-                printf("score jeu total joueur 2 = %d \n",score_jeu_total_2);
                 sprintf(scorejeu_graph,"%d",score_jeu_intermediaire_2);
                 cleanScore_jeu2(total_jeu);
                 afficher_texte(scorejeu_graph,20,psauvegarde7,sdlGris);
@@ -699,12 +673,10 @@ int main(int argc, char **argv)
     if(score_jeu_total < score_jeu_total_2)
         {
         score_final = score_jeu_total_2;
-        printf("Joueur 2 qui a un meilleur score \n");
         }
     else
         {
         score_final = score_jeu_total; 
-        printf("Joueur 1 qui a un meilleur score \n");
         }
     if (fichier != NULL)
         {
@@ -713,7 +685,6 @@ int main(int argc, char **argv)
             fseek(fichier,0,SEEK_SET);
             fprintf(fichier,"%d",score_final);
             fscanf(fichier,"%d",&score_final);
-            printf("HIGH SCORE : %d \n",score_final);
             fclose(fichier);
             }
         else

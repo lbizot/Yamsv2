@@ -47,12 +47,6 @@ void ouvrir_fenetre(int largeur, int hauteur){
     //initialisation des variables globales
     LARGEUR = largeur ;
     HAUTEUR = hauteur ;
-    //printf("LARGEUR %d HAUTEUR %d\n",LARGEUR,HAUTEUR);
-
-    // pour permettre les répétitions de touche si elles restent enfoncées
-    //SDL_EnableKeyRepeat(5, 5);
-
-    //initialisation du hasard
     srand(time(NULL));
 }
 
@@ -104,15 +98,8 @@ void afficher_image(std::string nom, Point coin){
     SDL_RenderPresent(sdlRenderer);
     SDL_FreeSurface(sdlSurface);
 }
-/*
-void changer_pixel(Point pix, Couleur couleur) {
-    if ((0 <= pix.x) && (pix.x < LARGEUR) && (0 <= pix.y ) && (pix.y < HAUTEUR))
-    {
-        *( (Uint32*)ecran->pixels + pix.y * largeur_ecran + pix.x ) = couleur ;
-    }
-}
 
-*/
+
 void dessiner_rectangle(Point coin, int largeur, int hauteur, SDL_Color couleur) {
     SDL_Rect rect;
    	rect.x = coin.x;
@@ -126,47 +113,6 @@ void dessiner_rectangle(Point coin, int largeur, int hauteur, SDL_Color couleur)
 
 ////////////////////////////////////////////////////////////////////////////////
 // 3. Gestion des événements
-
-// renvoie le code SDLK de la prochaine touche pressée
-// fonction bloquante
-int attendre_touche(void){
-    do {
-        SDL_WaitEvent(&lastevent) ;
-        _test_arret() ;
-    }
-    while (lastevent.type != SDL_KEYDOWN ) ;
-    return lastevent.key.keysym.sym;
-}
-
-// renvoie le code SDLK de la première touche pressée pendant
-// la durée duree_ms (en millisecondes)
-// (bloque le jeu en attente pendant cette duree)
-// renvoie 0 si aucune touche n'a été pressée
-int attendre_touche_duree(int duree_ms)
-{
-
-    unsigned int depart = SDL_GetTicks();
-    unsigned int courant = SDL_GetTicks();
-    int code = 0;
-    SDL_Event e;
-    while(SDL_PollEvent(&e))
-        _test_arret() ;
-    while(code==0 && int(courant - depart) < duree_ms)
-    {
-        courant = SDL_GetTicks();
-        SDL_PollEvent(&e) ;
-        if(e.type == SDL_KEYDOWN)
-
-            code = e.key.keysym.sym;
-        _test_arret() ;
-    }
-    while(int(courant - depart) < duree_ms )
-    {
-        courant = SDL_GetTicks();
-        _test_arret() ;
-    }
-    return code;
-}
 
 // renvoie les coordonnees du prochain clic (gauche ou droite) de souris
 // fonction bloquante
@@ -183,95 +129,6 @@ Point attendre_clic() {
     return p;
 }
 
-//comme la fonction attendre clic, mais on ajoute un signe
-//négatif devant les coordonnées du point si c'est un clic droit
-Point attendre_clic_gauche_droite() {
-    do {
-        SDL_WaitEvent(&lastevent) ;
-        _test_arret();
-    }
-    while (lastevent.type != SDL_MOUSEBUTTONDOWN) ;
-    Point p ;
-    if (lastevent.button.button==SDL_BUTTON_RIGHT)
-    {
-        p.x = - lastevent.button.x ;
-        p.y = - lastevent.button.y ;
-    }
-    else
-    {
-        p.x = lastevent.button.x ;
-        p.y = lastevent.button.y ;
-    }
-
-    return p;
-}
-
-
-////////////////////////////////////////////////////////////////////////////////
-// 3 bis : fonctions optionnelles pour les événements, non bloquantes
-
-
-//reinitialise la mémoire des événements à 0
-void reinitialiser_evenements(void)
-{
-    memset(trace_evts.touches, 0, sizeof(trace_evts.touches)) ;
-    dernier_clic.x = -1;
-    dernier_clic.y = -1;
-}
-
-// memorise les evenements ayant eu lieu depuis la derniere
-// reinitialisation
-void traiter_evenements(void)
-{
-
-    while(SDL_PollEvent(&lastevent))
-    {
-        switch(lastevent.type)
-        {
-            case SDL_MOUSEMOTION:
-                trace_evts.sourisx = lastevent.motion.x;
-                trace_evts.sourisy = lastevent.motion.y;
-                break;
-            case SDL_KEYDOWN:
-                trace_evts.touches[lastevent.key.keysym.sym]=1 ;
-                break ;
-            case SDL_MOUSEBUTTONDOWN:
-                dernier_clic.x = lastevent.motion.x ;
-                dernier_clic.y = lastevent.motion.y ;
-        }
-
-    }
-
-}
-
-// indique si la touche de code SDL en question a été pressée
-// entre la derniere reinitialisation et le dernier traitement
-int touche_a_ete_pressee(int code)
-{
-    return trace_evts.touches[code] ;
-}
-
-//renvoie les coordonnees du dernier clic entre la
-// entre la derniere reinitialisation et le dernier traitement
-// Point (-1,-1) si pas de clic
-Point clic_a_eu_lieu()
-{
-    Point res = dernier_clic ;
-    dernier_clic.x = -1;
-    dernier_clic.y = -1 ;
-    return res;
-}
-
-// renvoie un point de coordonnées relatives souris obtenu
-// entre la derniere reinitialisation et le dernier traitement
-// (0,0) au lancement, dernière position reçue si sortie de fenêtre
-Point deplacement_souris_a_eu_lieu()
-{
-    Point res;
-    res.x = trace_evts.sourisx;
-    res.y = trace_evts.sourisy;
-    return res;
-}
 
 ////////////////////////////////////////////////////////////////////////////////
 // 4. Affichage de texte

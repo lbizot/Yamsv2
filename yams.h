@@ -231,7 +231,6 @@ Main compte_combi(Main m1)
 
                 }
             }
-        printf("%d dé de %d \n",m1.nbDesParValeur[i],i);
         }
     return m1;
     }
@@ -399,7 +398,6 @@ Main combi(Main m1)
     sprintf(score_graph,"%d",s_total);
     afficher_texte(score_graph,20,m1.cordnum[7],sdlBlue);
     afficher_texte(score_graph,20,m1.cordnum[8],sdlRed);
-    printf("sous total = %d \n",s_total);
     return m1;
     }
 
@@ -428,8 +426,6 @@ Des initDes(Des dice)
 
 Des afficherDes_console(Des dice)
     {
-    printf("%d ",dice.valeurDes);
-    printf("statut = %d \n",dice.stat);
     return dice;
     }
 void afficheDes_graph(int valeurd, Point carre)
