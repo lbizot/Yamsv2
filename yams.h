@@ -10,9 +10,9 @@
 /******************************************************************************/
 #define RESH 800
 #define RESV 600
-#define plateau 0x75313d
-#define totaux 0xff3333
-#define background 0x51784d
+//#define plateau 0x75313d
+//#define totaux 0xff3333
+//#define background 0x51784d
 
 /******************************************************************************/
 /* STRUCTURES                                                                 */
@@ -114,7 +114,7 @@ void cleanScore_jeu(Point jeu)
     jeu.y += 4;
     afficher_image("./files/image/carre_jaune.bmp",jeu);
     jeu.y += 33;
-    //dessiner_rectangle(jeu,50,33,totaux);
+    dessiner_rectangle(jeu,50,33,totaux);
     actualiser();
     }
 void cleanScore_jeu2(Point jeu)
@@ -128,7 +128,7 @@ void cleanScore_jeu2(Point jeu)
     jeu.y += 4;
     afficher_image("./files/image/carre_jaune.bmp",jeu);
     jeu.y += 33;
-    //dessiner_rectangle(jeu,50,33,totaux);
+    dessiner_rectangle(jeu,50,33,totaux);
     actualiser();
     }
 
@@ -140,7 +140,7 @@ void cleanScore_tmp()
 
 void effaceDesLock_graph(Point p1)
     {
-    //dessiner_rectangle(p1,60,60,plateau);
+    dessiner_rectangle(p1,60,60,plateau);
     }
 
 Point RenouvellementDes1(Des d1, Point p1)

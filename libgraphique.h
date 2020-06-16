@@ -1,18 +1,3 @@
-/*******************************************************************************
- * libraphique.c                                                               *
- * Quelques fonctions C basées sur la SDl pour réaliser des opérations         *
- * graphiques simples                                                          *
- *                                                                             *
- * Pour compiler en ligne de commande :                                        *
- * gcc ../lib/libgraphique.c prog.c -o resultat                                *
- *           `sdl-config --libs --cflags` -lm -lSDL                            *
- *                                                                             *
- * où                                                                          *
- *             prog.c : votre code source                                      *
- *             resultat    : nom de l'exécutable                               *
- *******************************************************************************
-*/
-
 ///////////////////////////////////////////////////////////////////////////////
 //0. Directive préprocesseur
 #include <SDL2/SDL.h>
@@ -72,9 +57,9 @@ void actualiser();
 void afficher_image(std:: string nom, Point coin);
 /*
 void changer_pixel(Point pix, Couleur couleur);
-
-void dessiner_rectangle(Point coin, int largeur, int hauteur, Couleur couleur);
 */
+void dessiner_rectangle(Point coin, int largeur, int hauteur, SDL_Color couleur);
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // 3. Gestion des événements
@@ -147,6 +132,9 @@ void attente(int duree_ms);
 #define sdlBlue    {0, 0, 255, 0}
 #define sdlWhite   {255, 255, 255, 0}
 #define sdlGris    {128, 128, 128, 0}
+#define plateau    {255, 51, 51,0}
+#define totaux 	   {81, 120, 77,0}
+#define background {117, 49, 61, 0}
 
 #define argent     0xC0C0C0
 #define blanc      0xFFFFFF

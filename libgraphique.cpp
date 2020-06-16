@@ -64,15 +64,13 @@ void fermer_fenetre(){
     SDL_DestroyWindow(sdlScreen);
     SDL_FreeSurface(sdlSurface);
     SDL_Quit();
+    exit(0);
 }
 
 // teste si la fin du programme a été demandée et le termine si nécessaire
 void _test_arret() {
-    if ((lastevent.type == SDL_QUIT) ||
-            ( (lastevent.type == SDL_KEYDOWN )
-              && (lastevent.key.keysym.sym == SDLK_ESCAPE))
-       )
-        fermer_fenetre() ;
+    if ((lastevent.type == SDL_QUIT) || ( (lastevent.type == SDL_KEYDOWN ) && (lastevent.key.keysym.sym == SDLK_ESCAPE)))
+        fermer_fenetre();
 }
 
 
@@ -114,18 +112,20 @@ void changer_pixel(Point pix, Couleur couleur) {
     }
 }
 
-
-void dessiner_rectangle(Point coin, int largeur, int hauteur, Couleur couleur) {
-    Point p ;
+*/
+void dessiner_rectangle(Point coin, int largeur, int hauteur, SDL_Color couleur) {
     int bord_droit = coin.x + largeur ;
     int bord_bas = coin.y + hauteur ;
-    for (p.x = coin.x; p.x < bord_droit ; ++(p.x)) {
-        for (p.y = coin.y ; p.y  < bord_bas ; ++(p.y) ) {
-            changer_pixel(p, couleur);
-        }
-    }
+    SDL_Rect rect;
+   	rect.x = coin.x;
+    rect.y = coin.y;
+    rect.w = largeur;
+    rect.h = hauteur;
+    SDL_SetRenderDrawColor(sdlRenderer, couleur.r, couleur.g, couleur.b, couleur.a);
+    SDL_RenderFillRect(sdlRenderer,&rect);
+    SDL_RenderPresent(sdlRenderer);
 }
-*/
+
 ////////////////////////////////////////////////////////////////////////////////
 // 3. Gestion des événements
 

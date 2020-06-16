@@ -46,7 +46,7 @@ int main(int argc, char **argv)
 
 // ******* OUVERTURE FICHIER **********
 
-FILE* fichier = NULL;
+	FILE* fichier = NULL;
 
 
     fichier = fopen("test.txt", "r+");
@@ -170,7 +170,7 @@ FILE* fichier = NULL;
         }
     while(case1_1!=1 || case2_1!=1 || case3_1!=1 || case4_1!=1 || case5_1!=1 || case6_1!=1 || case7_1!=1 || case8_1 != 1 || case9_1 != 1 || case10_1 != 1 || case11_1 != 1 || case12_1 != 1 || case15_1 != 1 || case1_2!=1 || case2_2!=1 || case3_2!=1 || case4_2!=1 || case5_2!=1 || case6_2!=1 || case7_2!=1 || case8_2 != 1 || case9_2 != 1 || case10_2 != 1 || case11_2 != 1 || case12_2 != 1 || case15_2 != 1)
         {
-        //dessiner_rectangle(affiche_joueur,87,23,background);
+        dessiner_rectangle(affiche_joueur,87,23,background);
         actualiser();
         if(tour_joueur % 2 == 0)
             {
@@ -222,7 +222,7 @@ FILE* fichier = NULL;
                 
                 if( (clic.x > 440 && clic.x < 500) && (clic.y > 200 && clic.y < 260) && d1.stat == 0)
                     {
-                    //dessiner_rectangle(p1,60,60,plateau);
+                    dessiner_rectangle(p1,60,60,plateau);
                     p1.x -= 120;
                     p1.y += 313;
                     afficheDes_graph(d1.valeurDes, p1);
@@ -232,7 +232,7 @@ FILE* fichier = NULL;
                     } 
                 else if( (clic.x > 560 && clic.x < 620) && (clic.y > 200 && clic.y < 260) && d2.stat == 0)
                     {
-                    //dessiner_rectangle(p2,60,60,plateau);
+                    dessiner_rectangle(p2,60,60,plateau);
                     p2.x -= 150;
                     p2.y += 313;
                     afficheDes_graph(d2.valeurDes, p2);
@@ -242,7 +242,7 @@ FILE* fichier = NULL;
                     }
                 else if( (clic.x > 400 && clic.x < 460) && (clic.y > 300 && clic.y < 360) && d3.stat == 0)
                     {
-                    //dessiner_rectangle(p3,60,60,plateau);
+                    dessiner_rectangle(p3,60,60,plateau);
                     p3.x += 100;
                     p3.y += 213;
                     afficheDes_graph(d3.valeurDes, p3);
@@ -252,7 +252,7 @@ FILE* fichier = NULL;
                     }
                 else if( (clic.x > 500 && clic.x < 560) && (clic.y > 300 && clic.y < 360) && d4.stat == 0)
                     {
-                    //dessiner_rectangle(p4,60,60,plateau);
+                    dessiner_rectangle(p4,60,60,plateau);
                     p4.x += 90;
                     p4.y += 213;
                     afficheDes_graph(d4.valeurDes, p4);
@@ -262,7 +262,7 @@ FILE* fichier = NULL;
                     }
                 else if( (clic.x > 600 && clic.x < 660) && (clic.y > 300 && clic.y < 360) && d5.stat == 0)
                     {
-                    //dessiner_rectangle(p5,60,60,plateau);
+                    dessiner_rectangle(p5,60,60,plateau);
                     p5.x += 83;
                     p5.y += 213;
                     afficheDes_graph(d5.valeurDes, p5);
@@ -281,7 +281,7 @@ FILE* fichier = NULL;
 
                 if( (clic.x > 320 && clic.x < 380) && (clic.y > 513 && clic.y < 573) && (d1.stat == 1 && sauv[i]==1) )
                     {
-                    //dessiner_rectangle(p1,60,60,plateau);
+                    dessiner_rectangle(p1,60,60,plateau);
                     p1.x += 120;
                     p1.y -= 313;
                     afficheDes_graph(d1.valeurDes, p1);
@@ -290,7 +290,7 @@ FILE* fichier = NULL;
                     } 
                 else if( (clic.x > 410 && clic.x < 470) && (clic.y > 513 && clic.y < 573) && (d2.stat == 1 && sauv[i]==1) )
                     {
-                    //dessiner_rectangle(p2,60,60,plateau);
+                    dessiner_rectangle(p2,60,60,plateau);
                     p2.x += 150;
                     p2.y -= 313;
                     afficheDes_graph(d2.valeurDes, p2);
@@ -299,7 +299,7 @@ FILE* fichier = NULL;
                     }
                 else if( (clic.x > 500 && clic.x < 560) && (clic.y > 513 && clic.y < 573) && (d3.stat == 1 && sauv[i]==1) )
                     {
-                    //dessiner_rectangle(p3,60,60,plateau);
+                    dessiner_rectangle(p3,60,60,plateau);
                     p3.x -= 100;
                     p3.y -= 213;
                     afficheDes_graph(d3.valeurDes, p3);
@@ -308,7 +308,7 @@ FILE* fichier = NULL;
                     }
                 else if( (clic.x > 590 && clic.x < 650) && (clic.y > 513 && clic.y < 573) && (d4.stat == 1 && sauv[i]==1) )
                     {
-                    //dessiner_rectangle(p4,60,60,plateau);
+                    dessiner_rectangle(p4,60,60,plateau);
                     p4.x -= 90;
                     p4.y -= 213;
                     afficheDes_graph(d4.valeurDes, p4);
@@ -317,7 +317,7 @@ FILE* fichier = NULL;
                     }
                 else if( (clic.x > 683 && clic.x < 743) && (clic.y > 513 && clic.y < 573) && (d5.stat == 1 && sauv[i]==1) )
                     {
-                    //dessiner_rectangle(p5,60,60,plateau);
+                    dessiner_rectangle(p5,60,60,plateau);
                     p5.x -= 83;
                     p5.y -= 213;
                     afficheDes_graph(d5.valeurDes, p5);
@@ -724,7 +724,6 @@ FILE* fichier = NULL;
 
     attendre_clic();
     fermer_fenetre();
-
     return(0);
     }
 
