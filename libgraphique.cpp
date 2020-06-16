@@ -114,8 +114,6 @@ void changer_pixel(Point pix, Couleur couleur) {
 
 */
 void dessiner_rectangle(Point coin, int largeur, int hauteur, SDL_Color couleur) {
-    int bord_droit = coin.x + largeur ;
-    int bord_bas = coin.y + hauteur ;
     SDL_Rect rect;
    	rect.x = coin.x;
     rect.y = coin.y;
