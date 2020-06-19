@@ -1,59 +1,33 @@
 #include "yams.h"
 
-int main(int argc, char **argv)
-    {
-        /*
-    srand(time(NULL));
-    Point p={250,200};
-    ouvrir_fenetre(800,600);
-    afficher_texte("YAM's!",100,p,sdlsdlRed);
-    actualiser();
-    attente(1000);
-    Point afficheimage={0, 0};
-    afficher_image("./files/image/fondyams.bmp",afficheimage);
-    afficher_image("./files/image/de1.bmp",afficheimage);
-    actualiser();
-    attente(5000);
-    fermer_fenetre();
-    return(0);
-    */
-    srand(time(NULL));
+
+
+Yams::Yams(){
+	srand(time(NULL));
     Point p={250,250};
-    ouvrir_fenetre(RESH,RESV);
-    afficher_texte("YAM's!",100,p,sdlRed);
-    attente(2000);
+    lb.ouvrir_fenetre(RESH,RESV);
+    lb.afficher_texte("YAM's!",100,p,sdlRed);
+    lb.attente(2000);
     Point afficheimage={0, 0};
-    afficher_image("./files/image/fondyams.bmp",afficheimage);   
+    lb.afficher_image("./files/image/fondyams.bmp",afficheimage);   
     Point efface_colonne = { 204 , 0 };
-    afficher_image("./files/image/colonne.bmp",efface_colonne);
-    actualiser();
-    Point total_jeu = {155,267};
+    lb.afficher_image("./files/image/colonne.bmp",efface_colonne);
+    total_jeu = {155,267};
+ // ******* DECLARATION DéS ******
 
-
-    
-    
-// ******* DECLARATION DéS ******
-
-    Des d1;
-    Des d2;
-    Des d3;
-    Des d4;
-    Des d5;
-    Main m1;
-    
-// ******* FIN *********
-
+    //Des d1;
+    //Des d2;
+    //Des d3;
+    //Des d4;
+    //Des d5;
+    //Main m1;
 
 // ******* OUVERTURE FICHIER **********
 
-	FILE* fichier = NULL;
+	fichier = NULL;
 
 
     fichier = fopen("test.txt", "r+");
-
-
-// **********************************
-
 
 // ********************** POINT DE COORDONNEES : SCORE DU ROUND (SCORE TEMP)*****************************
 
@@ -88,79 +62,120 @@ int main(int argc, char **argv)
     m1.cordnum[15].x = 123;// chance
     m1.cordnum[15].y = 505;
 
-// ********************* FIN ***************************************************
-
 // ********************* POINT DE COORDONNEES : CHOIX JOUEUR -> SAUVEGARDE ****************************
     
-    Point psauvegarde = {175,35}; // 1
-    Point psauvegarde2 = {175,70};// 2
-    Point psauvegarde3 = {175,105};// 3
-    Point psauvegarde4 = {175,137};// 4
-    Point psauvegarde5 = {175,170};// 5
-    Point psauvegarde6 = {175,205};// 6
-    Point psauvegarde7 = {175,237};// BONUS
-    Point psauvegarde8 = {175,270};// TOTAL 1
-    Point psauvegarde9 = {175,305};// BRELAN
-    Point psauvegarde10 = {175,340};// CARRE
-    Point psauvegarde11 = {175, 370};// FULL 
-    Point psauvegarde12 = {175, 405};// PETITE SUITE
-    Point psauvegarde13 = {175, 440};// GRANDE SUITE 
-    Point psauvegarde14 = {175, 470};// YAMS 
-    Point psauvegarde15 = {175, 505};// CHANCE TOTAL
-    Point psauvegarde16 = {175, 540};// TOTAL 2.1
-    Point psauvegarde17 = {175, 575};// TOTAL 2
-
-// ********************** FIN **********************************************************
+    psauvegarde = {175,35}; // 1
+    psauvegarde2 = {175,70};// 2
+    psauvegarde3 = {175,105};// 3
+    psauvegarde4 = {175,137};// 4
+    psauvegarde5 = {175,170};// 5
+    psauvegarde6 = {175,205};// 6
+    psauvegarde7 = {175,237};// BONUS
+    psauvegarde8 = {175,270};// TOTAL 1
+    psauvegarde9 = {175,305};// BRELAN
+    psauvegarde10 = {175,340};// CARRE
+    psauvegarde11 = {175, 370};// FULL 
+    psauvegarde12 = {175, 405};// PETITE SUITE
+    psauvegarde13 = {175, 440};// GRANDE SUITE 
+    psauvegarde14 = {175, 470};// YAMS 
+    psauvegarde15 = {175, 505};// CHANCE TOTAL
+    psauvegarde16 = {175, 540};// TOTAL 2.1
+    psauvegarde17 = {175, 575};// TOTAL 2
 
 
 // ********* DECLARATION POINTS OU LES DéS SERONT AFFICHé ******
 
-    Point p1 = { 440 , 200 };
-    Point p2 = { 560 , 200 };
-    Point p3 = { 400 , 300 };
-    Point p4 = { 500 , 300 };
-    Point p5 = { 600 , 300 };
-    
-    
-// ********* FIN *********************
+    p1 = { 440 , 200 };
+    p2 = { 560 , 200 };
+    p3 = { 400 , 300 };
+    p4 = { 500 , 300 };
+    p5 = { 600 , 300 };
 
 // *********** VARIABLES CONCERNANT JOUEUR 1 ********************
     
-    int score_jeu_i2 = 0, score_jeu_intermediaire = 0, score_jeu_total = 0;//joueur 1
-    int case1_1 = 0,case2_1 = 0,case3_1 = 0,case4_1 = 0,case5_1 = 0,case6_1 = 0,case7_1 = 0, case8_1 = 0,case9_1 = 0,case12_1 = 0,case10_1 = 0, case11_1 = 0, case15_1 = 0;//case quand on clic dessus, le temps qu'on a pas cliqué sur toute les cases on continu le jeu. JOUEUR 1.
-    int t_case1_1 = 0, t_case2_1 = 0, t_case3_1 = 0, t_case4_1 = 0, t_case5_1 = 0, t_case6_1 = 0, t_case7_1 = 0, t_case8_1 = 0,t_case9_1 = 0,t_case12_1 = 0,t_case10_1 = 0, t_case11_1 = 0,t_case15_1 = 0;//JOUEUR 1
-
-// *************** FIN *****************************************
+    score_jeu_i2 = 0;
+    score_jeu_intermediaire = 0;
+    score_jeu_total = 0;//joueur 1
+    case1_1 = 0;
+    case2_1 = 0;
+    case3_1 = 0;
+    case4_1 = 0;
+    case5_1 = 0;
+    case6_1 = 0;
+    case7_1 = 0;
+    case8_1 = 0;
+    case9_1 = 0;
+    case12_1 = 0;
+    case10_1 = 0;
+    case11_1 = 0;
+    case15_1 = 0;//case quand on clic dessus, le temps qu'on a pas cliqué sur toute les cases on continu le jeu. JOUEUR 1.
+    t_case1_1 = 0;
+    t_case2_1 = 0;
+    t_case3_1 = 0;
+    t_case4_1 = 0;
+    t_case5_1 = 0;
+    t_case6_1 = 0;
+    t_case7_1 = 0;
+    t_case8_1 = 0;
+    t_case9_1 = 0;
+    t_case12_1 = 0;
+    t_case10_1 = 0;
+    t_case11_1 = 0;
+    t_case15_1 = 0;//JOUEUR 1
 
 // ************** VARIABLES CONCERNANT JOUEUR 2 *****************
     
-    int score_jeu_intermediaire_2 = 0, score_jeu_i2_2 = 0, score_jeu_total_2 = 0;//variables joueur 2
+    score_jeu_intermediaire_2 = 0;
+    score_jeu_i2_2 = 0;
+    score_jeu_total_2 = 0;//variables joueur 2
     
-    int case1_2 = 0,case2_2 = 0,case3_2 = 0,case4_2 = 0,case5_2 = 0,case6_2 = 0,case7_2 = 0, case8_2 = 0,case9_2 = 0,case10_2 = 0, case11_2 = 0, case15_2 = 0,case12_2 = 0;// JOUEUR 2.
-    int t_case1_2 = 0, t_case2_2 = 0, t_case3_2 = 0, t_case4_2 = 0, t_case5_2 = 0, t_case6_2 = 0, t_case7_2 = 0, t_case8_2 = 0,t_case9_2 = 0,t_case10_2 = 0, t_case11_2 = 0,t_case12_2 = 0, t_case15_2 = 0;//JOUEUR 2
-
-
-// ******************** FIN *************************************
+    case1_2 = 0;
+    case2_2 = 0;
+    case3_2 = 0;
+    case4_2 = 0;
+    case5_2 = 0;
+    case6_2 = 0;
+    case7_2 = 0;
+    case8_2 = 0;
+    case9_2 = 0;
+    case10_2 = 0;
+    case11_2 = 0;
+    case15_2 = 0;
+    case12_2 = 0;// JOUEUR 2.
+    t_case1_2 = 0;
+    t_case2_2 = 0;
+    t_case3_2 = 0;
+    t_case4_2 = 0;
+    t_case5_2 = 0;
+    t_case6_2 = 0;
+    t_case7_2 = 0;
+    t_case8_2 = 0;
+    t_case9_2 = 0;
+    t_case10_2 = 0;
+    t_case11_2 = 0;
+    t_case12_2 = 0;
+    t_case15_2 = 0;//JOUEUR 2
 
     Point o1 = { 600 , 20 };
     Point affiche_joueur = { 400 , 20 };
-    int sauv[3]; // TABLEAU PERMETTANT DE NE PAS POUVOIR DESELECTIONNER UN Dé AU PROCHAIN LANCER
-    Point clic;
-    int i,k;
-    int tour_joueur = 0;
-    int deja_clique = 0;
-    int score_final = 0;
-    Point choix_score;
-    int lastscore = 0;
-    char score_graph[3];    
-    char scorejeu_graph[3];
-    int bonus = 0;
+    tour_joueur = 0;
+    deja_clique = 0;
+    score_final = 0;
+    lastscore = 0;
+    score_graph[3];    
+    scorejeu_graph[3];
+    bonus = 0;
+    runGame();
+}
+
+
+void Yams::runGame(){
     if (fichier != NULL)
         {
         fscanf(fichier,"%d",&score_jeu_total);
         lastscore = score_final;
         sprintf(score_graph,"LAST HIGH SCORE : %d",score_jeu_total);
-        afficher_texte(score_graph,15,o1,sdlWhite);
+        lb.afficher_texte(score_graph,15,o1,sdlWhite);
         }
     else
         {
@@ -169,17 +184,16 @@ int main(int argc, char **argv)
         }
     while(case1_1!=1 || case2_1!=1 || case3_1!=1 || case4_1!=1 || case5_1!=1 || case6_1!=1 || case7_1!=1 || case8_1 != 1 || case9_1 != 1 || case10_1 != 1 || case11_1 != 1 || case12_1 != 1 || case15_1 != 1 || case1_2!=1 || case2_2!=1 || case3_2!=1 || case4_2!=1 || case5_2!=1 || case6_2!=1 || case7_2!=1 || case8_2 != 1 || case9_2 != 1 || case10_2 != 1 || case11_2 != 1 || case12_2 != 1 || case15_2 != 1)
         {
-        dessiner_rectangle(affiche_joueur,87,23,background);
-        actualiser();
+        lb.dessiner_rectangle(affiche_joueur,87,23,background);
         if(tour_joueur % 2 == 0)
             {
-            afficher_texte("Joueur 1",20,affiche_joueur,sdlWhite);
+            lb.afficher_texte("Joueur 1",20,affiche_joueur,sdlWhite);
             }
         else
             {
-            afficher_texte("Joueur 2",20,affiche_joueur,sdlWhite);
+            lb.afficher_texte("Joueur 2",20,affiche_joueur,sdlWhite);
             }
-        clic = attendre_clic(); 
+        clic = lb.attendre_clic(); 
 
         for(i = 0; i < 3 ; i++)
             {
@@ -189,7 +203,7 @@ int main(int argc, char **argv)
                 
                 for(k = 0 ; k < 8 ; k++)
                     {
-                    attente(120);
+                    lb.attente(120);
                     d1 = initDes(d1);
                     d2 = initDes(d2);
                     d3 = initDes(d3);
@@ -200,7 +214,6 @@ int main(int argc, char **argv)
                     afficheDes_graph(d3.valeurDes, p3);
                     afficheDes_graph(d4.valeurDes, p4);
                     afficheDes_graph(d5.valeurDes, p5); 
-                    actualiser();
                     }
                 d1 = afficherDes_console(d1);
                 d2 = afficherDes_console(d2);
@@ -208,18 +221,18 @@ int main(int argc, char **argv)
                 d4 = afficherDes_console(d4);
                 d5 = afficherDes_console(d5);
                 
-                clic = attendre_clic();
+                clic = lb.attendre_clic();
                 }
             else
                 {
-                clic = attendre_clic();
+                clic = lb.attendre_clic();
                 }
             while(RenouvelerDes(clic) != 1) // TACHE A FAIRE : CREER LA POSSIBILITE DANNULER NOTRE CHOIX DE SELECTION DE DéS
                 {
                 
                 if( (clic.x > 440 && clic.x < 500) && (clic.y > 200 && clic.y < 260) && d1.stat == 0)
                     {
-                    dessiner_rectangle(p1,60,60,plateau);
+                    lb.dessiner_rectangle(p1,60,60,plateau);
                     p1.x -= 120;
                     p1.y += 313;
                     afficheDes_graph(d1.valeurDes, p1);
@@ -228,7 +241,7 @@ int main(int argc, char **argv)
                     } 
                 else if( (clic.x > 560 && clic.x < 620) && (clic.y > 200 && clic.y < 260) && d2.stat == 0)
                     {
-                    dessiner_rectangle(p2,60,60,plateau);
+                    lb.dessiner_rectangle(p2,60,60,plateau);
                     p2.x -= 150;
                     p2.y += 313;
                     afficheDes_graph(d2.valeurDes, p2);
@@ -237,7 +250,7 @@ int main(int argc, char **argv)
                     }
                 else if( (clic.x > 400 && clic.x < 460) && (clic.y > 300 && clic.y < 360) && d3.stat == 0)
                     {
-                    dessiner_rectangle(p3,60,60,plateau);
+                    lb.dessiner_rectangle(p3,60,60,plateau);
                     p3.x += 100;
                     p3.y += 213;
                     afficheDes_graph(d3.valeurDes, p3);
@@ -246,7 +259,7 @@ int main(int argc, char **argv)
                     }
                 else if( (clic.x > 500 && clic.x < 560) && (clic.y > 300 && clic.y < 360) && d4.stat == 0)
                     {
-                    dessiner_rectangle(p4,60,60,plateau);
+                    lb.dessiner_rectangle(p4,60,60,plateau);
                     p4.x += 90;
                     p4.y += 213;
                     afficheDes_graph(d4.valeurDes, p4);
@@ -255,7 +268,7 @@ int main(int argc, char **argv)
                     }
                 else if( (clic.x > 600 && clic.x < 660) && (clic.y > 300 && clic.y < 360) && d5.stat == 0)
                     {
-                    dessiner_rectangle(p5,60,60,plateau);
+                    lb.dessiner_rectangle(p5,60,60,plateau);
                     p5.x += 83;
                     p5.y += 213;
                     afficheDes_graph(d5.valeurDes, p5);
@@ -273,7 +286,7 @@ int main(int argc, char **argv)
 
                 if( (clic.x > 320 && clic.x < 380) && (clic.y > 513 && clic.y < 573) && (d1.stat == 1 && sauv[i]==1) )
                     {
-                    dessiner_rectangle(p1,60,60,plateau);
+                    lb.dessiner_rectangle(p1,60,60,plateau);
                     p1.x += 120;
                     p1.y -= 313;
                     afficheDes_graph(d1.valeurDes, p1);
@@ -281,7 +294,7 @@ int main(int argc, char **argv)
                     } 
                 else if( (clic.x > 410 && clic.x < 470) && (clic.y > 513 && clic.y < 573) && (d2.stat == 1 && sauv[i]==1) )
                     {
-                    dessiner_rectangle(p2,60,60,plateau);
+                    lb.dessiner_rectangle(p2,60,60,plateau);
                     p2.x += 150;
                     p2.y -= 313;
                     afficheDes_graph(d2.valeurDes, p2);
@@ -289,7 +302,7 @@ int main(int argc, char **argv)
                     }
                 else if( (clic.x > 500 && clic.x < 560) && (clic.y > 513 && clic.y < 573) && (d3.stat == 1 && sauv[i]==1) )
                     {
-                    dessiner_rectangle(p3,60,60,plateau);
+                    lb.dessiner_rectangle(p3,60,60,plateau);
                     p3.x -= 100;
                     p3.y -= 213;
                     afficheDes_graph(d3.valeurDes, p3);
@@ -297,7 +310,7 @@ int main(int argc, char **argv)
                     }
                 else if( (clic.x > 590 && clic.x < 650) && (clic.y > 513 && clic.y < 573) && (d4.stat == 1 && sauv[i]==1) )
                     {
-                    dessiner_rectangle(p4,60,60,plateau);
+                    lb.dessiner_rectangle(p4,60,60,plateau);
                     p4.x -= 90;
                     p4.y -= 213;
                     afficheDes_graph(d4.valeurDes, p4);
@@ -305,7 +318,7 @@ int main(int argc, char **argv)
                     }
                 else if( (clic.x > 683 && clic.x < 743) && (clic.y > 513 && clic.y < 573) && (d5.stat == 1 && sauv[i]==1) )
                     {
-                    dessiner_rectangle(p5,60,60,plateau);
+                    lb.dessiner_rectangle(p5,60,60,plateau);
                     p5.x -= 83;
                     p5.y -= 213;
                     afficheDes_graph(d5.valeurDes, p5);
@@ -318,34 +331,31 @@ int main(int argc, char **argv)
                 
                 // *************************** FIN ****************************************
                 
-                actualiser();
                 
-                clic = attendre_clic();
+                clic = lb.attendre_clic();
                 RenouvelerDes(clic);
                 }
                 if(d1.stat == 1 && d2.stat == 1 && d3.stat == 1 && d4.stat == 1 && d5.stat == 1 ) break;
     
             }
             m1.tab[0] = d1.valeurDes;
-            //printf("TEST = %d \n",j1.m1[0].tab[0]);
             m1.tab[1] = d2.valeurDes;
             m1.tab[2] = d3.valeurDes;
             m1.tab[3] = d4.valeurDes;
             m1.tab[4] = d5.valeurDes;
             m1 = compte_combi(m1);
             m1 = combi(m1);
-            actualiser();
             
     //****************** SAUVEGARDE DU SCORE JOUEUR 1 *************************
             if(tour_joueur%2 == 0)
                 {
-                choix_score = attendre_clic();
+                choix_score = lb.attendre_clic();
                 do
                     {
                     if( (choix_score.x > 155 && choix_score.x < 205) && (choix_score.y > 32 && choix_score.y < 65) && case1_1 == 0)
                         {
                         sprintf(score_graph,"%d",m1.total_graph[1]);
-                        afficher_texte(score_graph,20,psauvegarde,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde,sdlGris);
                         case1_1 = 1;
                         t_case1_1 = m1.total_graph[1];
                         deja_clique = 1;
@@ -353,7 +363,7 @@ int main(int argc, char **argv)
                     else if( (choix_score.x > 155 && choix_score.x < 205) && (choix_score.y > 65 && choix_score.y < 98) && case2_1 == 0)
                         {
                         sprintf(score_graph,"%d",m1.total_graph[2]);
-                        afficher_texte(score_graph,20,psauvegarde2,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde2,sdlGris);
                         case2_1 = 1;
                         t_case2_1 = m1.total_graph[2];
                         deja_clique = 1;
@@ -361,7 +371,7 @@ int main(int argc, char **argv)
                     else if( (choix_score.x > 155 && choix_score.x < 205) && (choix_score.y > 98 && choix_score.y < 131) && case3_1 == 0)
                         {
                         sprintf(score_graph,"%d",m1.total_graph[3]);
-                        afficher_texte(score_graph,20,psauvegarde3,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde3,sdlGris);
                         case3_1 = 1;
                         t_case3_1 = m1.total_graph[3];
                         deja_clique = 1;
@@ -369,7 +379,7 @@ int main(int argc, char **argv)
                     else if( (choix_score.x > 155 && choix_score.x < 205) && (choix_score.y > 131 && choix_score.y < 164) && case4_1 == 0)
                         {
                         sprintf(score_graph,"%d",m1.total_graph[4]);
-                        afficher_texte(score_graph,20,psauvegarde4,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde4,sdlGris);
                         case4_1 = 1;
                         t_case4_1 = m1.total_graph[4];
                         deja_clique = 1;
@@ -377,7 +387,7 @@ int main(int argc, char **argv)
                     else if( (choix_score.x > 155 && choix_score.x < 205) && (choix_score.y > 164 && choix_score.y < 197) && case5_1 == 0 )
                         {
                         sprintf(score_graph,"%d",m1.total_graph[5]);
-                        afficher_texte(score_graph,20,psauvegarde5,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde5,sdlGris);
                         case5_1 = 1;
                         t_case5_1 = m1.total_graph[5];
                         deja_clique = 1;
@@ -385,7 +395,7 @@ int main(int argc, char **argv)
                     else if( (choix_score.x > 155 && choix_score.x < 205) && (choix_score.y > 200 && choix_score.y < 232) && case6_1 == 0 )
                         {
                         sprintf(score_graph,"%d",m1.total_graph[6]);
-                        afficher_texte(score_graph,20,psauvegarde6,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde6,sdlGris);
                         case6_1 = 1;
                         t_case6_1 = m1.total_graph[6];
                         deja_clique = 1;
@@ -393,7 +403,7 @@ int main(int argc, char **argv)
                     else if( (choix_score.x > 155 && choix_score.x < 205) && (choix_score.y > 300 && choix_score.y < 332) && case7_1 == 0 ) // BRELAN
                         {
                         sprintf(score_graph,"%d",m1.total_graph[9]);
-                        afficher_texte(score_graph,20,psauvegarde9,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde9,sdlGris);
                         case7_1 = 1;
                         t_case7_1 = m1.total_graph[9];
                         deja_clique = 1;
@@ -401,7 +411,7 @@ int main(int argc, char **argv)
                     else if( (choix_score.x > 155 && choix_score.x < 205) && (choix_score.y > 332 && choix_score.y < 364) && case8_1 == 0 ) // CARRE
                         {
                         sprintf(score_graph,"%d",m1.total_graph[10]);
-                        afficher_texte(score_graph,20,psauvegarde10,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde10,sdlGris);
                         case8_1 = 1;
                         t_case8_1 = m1.total_graph[10];
                         deja_clique = 1;
@@ -409,7 +419,7 @@ int main(int argc, char **argv)
                     else if( (choix_score.x > 155 && choix_score.x < 205) && (choix_score.y > 364 && choix_score.y < 396) && case9_1 == 0 ) // FULL
                         {
                         sprintf(score_graph,"%d",m1.total_graph[12]);
-                        afficher_texte(score_graph,20,psauvegarde11,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde11,sdlGris);
                         case9_1 = 1;
                         t_case9_1 = m1.total_graph[12];
                         deja_clique = 1; 
@@ -417,7 +427,7 @@ int main(int argc, char **argv)
                     else if( (choix_score.x > 155 && choix_score.x < 205) && (choix_score.y > 396 && choix_score.y < 428) && case10_1 == 0 ) // PETITE SUITE
                         {
                         sprintf(score_graph,"%d",m1.total_graph[13]);
-                        afficher_texte(score_graph,20,psauvegarde12,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde12,sdlGris);
                         case10_1 = 1;
                         t_case10_1 = m1.total_graph[13];
                         deja_clique = 1;
@@ -425,7 +435,7 @@ int main(int argc, char **argv)
                     else if( (choix_score.x > 155 && choix_score.x < 205) && (choix_score.y > 428 && choix_score.y < 460) && case11_1 == 0 ) // GRANDE SUITE
                         {
                         sprintf(score_graph,"%d",m1.total_graph[14]);
-                        afficher_texte(score_graph,20,psauvegarde13,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde13,sdlGris);
                         case11_1 = 1;
                         t_case11_1 = m1.total_graph[14];
                         deja_clique = 1;
@@ -433,7 +443,7 @@ int main(int argc, char **argv)
                     else if( (choix_score.x > 155 && choix_score.x < 205) && (choix_score.y > 460 && choix_score.y < 492) && case12_1 == 0 ) // YAM
                         {
                         sprintf(score_graph,"%d",m1.total_graph[11]);
-                        afficher_texte(score_graph,20,psauvegarde14,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde14,sdlGris);
                         case12_1 = 1;
                         t_case12_1 = m1.total_graph[11];
                         deja_clique = 1;
@@ -441,14 +451,14 @@ int main(int argc, char **argv)
                     else if( ((choix_score.x > 155 && choix_score.x < 205) && (choix_score.y > 501 && choix_score.y < 533)) && case15_1 == 0 ) // chance
                         {
                         sprintf(score_graph,"%d",m1.total_graph[15]);
-                        afficher_texte(score_graph,20,psauvegarde15,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde15,sdlGris);
                         case15_1 = 1;
                         t_case15_1 = m1.total_graph[15];
                         deja_clique = 1;                
                         }                                                   
                     else 
                         {
-                        choix_score = attendre_clic();
+                        choix_score = lb.attendre_clic();
                         }       
                     }while(DecisionJoueur(choix_score) != 1 || deja_clique != 1);
                 deja_clique = 0; // remet à 0 pour le prochain tour ;)  
@@ -463,30 +473,29 @@ int main(int argc, char **argv)
                     bonus = 0;
                     }
                     sprintf(scorejeu_graph,"%d",bonus);
-                    afficher_texte(scorejeu_graph,20,psauvegarde7,sdlRed);
+                    lb.afficher_texte(scorejeu_graph,20,psauvegarde7,sdlRed);
                 score_jeu_i2 = t_case7_1 + t_case8_1 + t_case9_1 + t_case10_1 + t_case11_1 + t_case12_1 + t_case15_1;
                 score_jeu_total = score_jeu_intermediaire + score_jeu_i2;
                 sprintf(scorejeu_graph,"%d",score_jeu_intermediaire);
                 cleanScore_jeu(total_jeu);
-                afficher_texte(scorejeu_graph,20,psauvegarde7,sdlGris);
-                afficher_texte(scorejeu_graph,20,psauvegarde8,sdlRed);
+                lb.afficher_texte(scorejeu_graph,20,psauvegarde7,sdlGris);
+                lb.afficher_texte(scorejeu_graph,20,psauvegarde8,sdlRed);
                 sprintf(scorejeu_graph,"%d",score_jeu_i2);
-                afficher_texte(scorejeu_graph,20,psauvegarde16,sdlRed);
+                lb.afficher_texte(scorejeu_graph,20,psauvegarde16,sdlRed);
                 sprintf(scorejeu_graph,"%d",score_jeu_total);
-                afficher_texte(scorejeu_graph,20,psauvegarde17,sdlWhite);
-                actualiser();
+                lb.afficher_texte(scorejeu_graph,20,psauvegarde17,sdlWhite);
                 
                 }
             else // JOUEUR 2 A PARTIR D'ICI
                 {
-                choix_score = attendre_clic();
+                choix_score = lb.attendre_clic();
                 do
                     {
                     if( (choix_score.x > 188 && choix_score.x < 238) && (choix_score.y > 32 && choix_score.y < 65) && case1_2 == 0)
                         {
                         psauvegarde.x += 33;
                         sprintf(score_graph,"%d",m1.total_graph[1]);
-                        afficher_texte(score_graph,20,psauvegarde,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde,sdlGris);
                         psauvegarde.x -= 33;
                         case1_2 = 1;
                         t_case1_2 = m1.total_graph[1];
@@ -496,7 +505,7 @@ int main(int argc, char **argv)
                         {
                         psauvegarde2.x += 33;
                         sprintf(score_graph,"%d",m1.total_graph[2]);
-                        afficher_texte(score_graph,20,psauvegarde2,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde2,sdlGris);
                         psauvegarde2.x -= 33;
                         case2_2 = 1;
                         t_case2_2 = m1.total_graph[2];
@@ -506,7 +515,7 @@ int main(int argc, char **argv)
                         {
                         psauvegarde3.x += 33;
                         sprintf(score_graph,"%d",m1.total_graph[3]);
-                        afficher_texte(score_graph,20,psauvegarde3,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde3,sdlGris);
                         psauvegarde3.x -= 33;
                         case3_2 = 1;
                         t_case3_2 = m1.total_graph[3];
@@ -516,7 +525,7 @@ int main(int argc, char **argv)
                         {
                         psauvegarde4.x += 33;
                         sprintf(score_graph,"%d",m1.total_graph[4]);
-                        afficher_texte(score_graph,20,psauvegarde4,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde4,sdlGris);
                         psauvegarde4.x -= 33;
                         case4_2 = 1;
                         t_case4_2 = m1.total_graph[4];
@@ -526,7 +535,7 @@ int main(int argc, char **argv)
                         {
                         psauvegarde5.x += 33;
                         sprintf(score_graph,"%d",m1.total_graph[5]);
-                        afficher_texte(score_graph,20,psauvegarde5,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde5,sdlGris);
                         psauvegarde5.x -= 33;
                         case5_2 = 1;
                         t_case5_2 = m1.total_graph[5];
@@ -536,7 +545,7 @@ int main(int argc, char **argv)
                         {
                         psauvegarde6.x += 33;
                         sprintf(score_graph,"%d",m1.total_graph[6]);
-                        afficher_texte(score_graph,20,psauvegarde6,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde6,sdlGris);
                         psauvegarde6.x -= 33;
                         case6_2 = 1;
                         t_case6_2 = m1.total_graph[6];
@@ -546,7 +555,7 @@ int main(int argc, char **argv)
                         {
                         psauvegarde9.x += 33;
                         sprintf(score_graph,"%d",m1.total_graph[9]);
-                        afficher_texte(score_graph,20,psauvegarde9,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde9,sdlGris);
                         psauvegarde9.x -= 33;
                         case7_2 = 1;
                         t_case7_2 = m1.total_graph[9];
@@ -556,7 +565,7 @@ int main(int argc, char **argv)
                         {
                         psauvegarde10.x += 33;
                         sprintf(score_graph,"%d",m1.total_graph[10]);
-                        afficher_texte(score_graph,20,psauvegarde10,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde10,sdlGris);
                         psauvegarde10.x -= 33;
                         case8_2 = 1;
                         t_case8_2 = m1.total_graph[10];
@@ -566,7 +575,7 @@ int main(int argc, char **argv)
                         {
                         psauvegarde11.x += 33;
                         sprintf(score_graph,"%d",m1.total_graph[12]);
-                        afficher_texte(score_graph,20,psauvegarde11,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde11,sdlGris);
                         psauvegarde11.x -= 33;
                         case9_2 = 1;
                         t_case9_2 = m1.total_graph[12];
@@ -576,7 +585,7 @@ int main(int argc, char **argv)
                         {
                         psauvegarde12.x += 33;
                         sprintf(score_graph,"%d",m1.total_graph[13]);
-                        afficher_texte(score_graph,20,psauvegarde12,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde12,sdlGris);
                         psauvegarde12.x -= 33;
                         case10_2 = 1;
                         t_case10_2 = m1.total_graph[13];
@@ -586,7 +595,7 @@ int main(int argc, char **argv)
                         {
                         psauvegarde13.x += 33;
                         sprintf(score_graph,"%d",m1.total_graph[14]);
-                        afficher_texte(score_graph,20,psauvegarde13,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde13,sdlGris);
                         psauvegarde13.x -= 33;
                         case11_2 = 1;
                         t_case11_2 = m1.total_graph[14];
@@ -596,7 +605,7 @@ int main(int argc, char **argv)
                         {
                         psauvegarde14.x += 33;
                         sprintf(score_graph,"%d",m1.total_graph[11]);
-                        afficher_texte(score_graph,20,psauvegarde14,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde14,sdlGris);
                         psauvegarde14.x -= 33;
                         case12_2 = 1;
                         t_case12_2 = m1.total_graph[11];
@@ -607,7 +616,7 @@ int main(int argc, char **argv)
                         {
                         psauvegarde15.x += 33;
                         sprintf(score_graph,"%d",m1.total_graph[15]);
-                        afficher_texte(score_graph,20,psauvegarde15,sdlGris);
+                        lb.afficher_texte(score_graph,20,psauvegarde15,sdlGris);
                         psauvegarde15.x -= 33;
                         case15_2 = 1;
                         t_case15_2 = m1.total_graph[15];
@@ -615,7 +624,7 @@ int main(int argc, char **argv)
                         }                                                                       
                     else 
                         {
-                        choix_score = attendre_clic();
+                        choix_score = lb.attendre_clic();
                         }       
                 }while(DecisionJoueur2(choix_score) != 1 || deja_clique != 1);
                 deja_clique = 0; // remet à 0 pour le prochain tour ;)  
@@ -630,24 +639,23 @@ int main(int argc, char **argv)
                     bonus = 0;
                     } 
                     sprintf(scorejeu_graph,"%d",bonus);
-                    afficher_texte(scorejeu_graph,20,psauvegarde7,sdlRed);
+                    lb.afficher_texte(scorejeu_graph,20,psauvegarde7,sdlRed);
                 score_jeu_i2_2 = t_case7_2 + t_case8_2 + t_case9_2 + t_case12_2 + t_case10_2 + t_case11_2 + t_case15_2;
                 score_jeu_total_2 = score_jeu_intermediaire_2 + score_jeu_i2_2;
                 sprintf(scorejeu_graph,"%d",score_jeu_intermediaire_2);
                 cleanScore_jeu2(total_jeu);
-                afficher_texte(scorejeu_graph,20,psauvegarde7,sdlGris);
+                lb.afficher_texte(scorejeu_graph,20,psauvegarde7,sdlGris);
                 psauvegarde8.x += 33;
-                afficher_texte(scorejeu_graph,20,psauvegarde8,sdlRed);
+                lb.afficher_texte(scorejeu_graph,20,psauvegarde8,sdlRed);
                 psauvegarde8.x -= 33;
                 sprintf(scorejeu_graph,"%d",score_jeu_i2_2);
                 psauvegarde16.x += 33;
-                afficher_texte(scorejeu_graph,20,psauvegarde16,sdlRed);
+                lb.afficher_texte(scorejeu_graph,20,psauvegarde16,sdlRed);
                 psauvegarde16.x -= 33;
                 sprintf(scorejeu_graph,"%d",score_jeu_total_2);
                 psauvegarde17.x += 33;
-                afficher_texte(scorejeu_graph,20,psauvegarde17,sdlWhite);
+                lb.afficher_texte(scorejeu_graph,20,psauvegarde17,sdlWhite);
                 psauvegarde17.x -= 33;
-                actualiser();
                 }
                 tour_joueur ++;         
             
@@ -668,7 +676,6 @@ int main(int argc, char **argv)
             d4 = unlock(d4);
             d5 = unlock(d5);
             cleanScore_tmp();
-            actualiser();
         }
     if(score_jeu_total < score_jeu_total_2)
         {
@@ -693,13 +700,373 @@ int main(int argc, char **argv)
             }
         }
 
-    attendre_clic();
-    fermer_fenetre();
-    return(0);
-    }
+    lb.attendre_clic();
+    lb.fermer_fenetre();
+}
 
 
+int Yams::DecisionJoueur(Point p1){
+    if( ((p1.x > 155 && p1.x < 205) && (p1.y > 32 && p1.y < 232)) || ((p1.x > 155 && p1.x < 205) && (p1.y > 300 && p1.y < 550)))
+        {
+        return 1;
+        }
+    else
+        {
+        return 0;
+        }
+
+}
+
+int Yams::DecisionJoueur2(Point p1){
+    if( ((p1.x > 188 && p1.x < 238) && (p1.y > 32 && p1.y < 232)) || ((p1.x > 188 && p1.x < 238) && (p1.y > 300 && p1.y < 550)))
+        {
+        return 1;
+        }
+    else
+        {
+        return 0;
+        }
+
+}
 
 
+void Yams::cleanScore_jeu(Point jeu){
+    jeu.y -= 33;
+    lb.afficher_image("./files/image/carre_jaune.bmp",jeu);
+    jeu.y += 33;
+    lb.afficher_image("./files/image/carre_jaune.bmp",jeu);
+    jeu.y += 33 * 8;
+    jeu.y += 4;
+    lb.afficher_image("./files/image/carre_jaune.bmp",jeu);
+    jeu.y += 33;
+    lb.dessiner_rectangle(jeu,50,33,totaux);
+}
+
+void Yams::cleanScore_jeu2(Point jeu){
+    jeu.x += 50;
+    jeu.y -= 33;
+    lb.afficher_image("./files/image/carre_jaune.bmp",jeu);
+    jeu.y += 33;
+    lb.afficher_image("./files/image/carre_jaune.bmp",jeu);
+    jeu.y += 33 * 8;
+    jeu.y += 4;
+    lb.afficher_image("./files/image/carre_jaune.bmp",jeu);
+    jeu.y += 33;
+    lb.dessiner_rectangle(jeu,50,33,totaux);
+}
+
+void Yams::cleanScore_tmp(){
+    Point efface_colonne = { 102 , 0 };
+    lb.afficher_image("./files/image/colonne.bmp",efface_colonne);
+}
+
+void Yams::effaceDesLock_graph(Point p1){
+    lb.dessiner_rectangle(p1,60,60,plateau);
+}
+
+Point Yams::RenouvellementDes1(Des d1, Point p1){
+    if(d1.stat == 1)
+        {
+        p1.x += 120;
+        p1.y -= 313;
+        }
+    else
+        {
+
+        }
+    return p1;
+}
+
+Point Yams::RenouvellementDes2(Des d1, Point p1){
+    if(d1.stat == 1)
+        {
+        p1.x += 150;
+        p1.y -= 313;
+        }
+    else
+        {
+
+        }
+    return p1;
+}
+
+Point Yams::RenouvellementDes3(Des d1, Point p1){
+    if(d1.stat == 1)
+        {
+        p1.x -= 100;
+        p1.y -= 213;
+        }
+    else
+        {
+
+        }
+    return p1;
+}
+
+Point Yams::RenouvellementDes4(Des d1, Point p1){
+    if(d1.stat == 1)
+        {
+        p1.x -= 90;
+        p1.y -= 213;
+        }
+    else
+        {
+
+        }
+    return p1;
+}
+
+Point Yams::RenouvellementDes5(Des d1, Point p1){
+    if(d1.stat == 1)
+        {
+        p1.x -= 83;
+        p1.y -= 213;
+        }
+    else
+        {
+
+        }
+    return p1;
+}
+
+Des Yams::unlock(Des dice){
+    dice.stat = 0;
+    return dice;
+}
+
+Main Yams::compte_combi(Main m1){
+    int i,j;
+    for(i = 1; i < 7 ; i++)
+        {
+        m1.nbDesParValeur[i] = 0;
+        for(j = 0 ; j < 5 ; j++)
+            {
+            if(m1.tab[j] == i)
+                {
+                m1.nbDesParValeur[i] += 1;
+                }
+            else
+                {
+
+                }
+            }
+        }
+    return m1;
+}
+
+Main Yams::combi(Main m1){
+    int i, s_total = 0,carre = 0,brelan = 0,yam=0,paire = 0,full = 0,psuite=0,gsuite=0;
+    char score_graph[3];
+    for(i = 1; i < 7 ; i++)
+        {
+        if(m1.nbDesParValeur[i]==0)
+            {
+            s_total = s_total + 0;
+            m1.total_graph[i] = 0;
+            sprintf(score_graph,"%d",m1.total_graph[i]);
+            lb.afficher_texte(score_graph,20,m1.cordnum[i],sdlBlue);
+            }
+        else if(m1.nbDesParValeur[i] == 1)
+            {
+            s_total = s_total + i;
+            m1.total_graph[i] = i;
+            sprintf(score_graph,"%d",m1.total_graph[i]);
+            lb.afficher_texte(score_graph,20,m1.cordnum[i],sdlBlue);
+            }
+        else if(m1.nbDesParValeur[i] == 2)
+            {
+            s_total = s_total + (m1.nbDesParValeur[i] * i);
+            //pairepourfull=1; on pourrai augmenter la variable de 1 quand on a une paire
+            m1.total_graph[i] = m1.nbDesParValeur[i] * i;
+            sprintf(score_graph,"%d",m1.total_graph[i]);
+            paire = 1;
+            lb.afficher_texte(score_graph,20,m1.cordnum[i],sdlBlue);
+            }
+        else if(m1.nbDesParValeur[i] == 3)
+            {
+            s_total = s_total + (m1.nbDesParValeur[i] * i);
+            brelan=1;
+            m1.total_graph[i] = m1.nbDesParValeur[i] * i;
+            sprintf(score_graph,"%d",m1.total_graph[i]);
+            lb.afficher_texte(score_graph,20,m1.cordnum[i],sdlBlue);
+            m1.total_graph[9] = (m1.nbDesParValeur[i] * i);
+            }
+        else if(m1.nbDesParValeur[i] == 4)
+            {
+            s_total = s_total + (m1.nbDesParValeur[i] * i);
+            m1.total_graph[i] = m1.nbDesParValeur[i] * i;
+            sprintf(score_graph,"%d",m1.total_graph[i]);
+            lb.afficher_texte(score_graph,20,m1.cordnum[i],sdlBlue);
+            carre=1;
+            m1.total_graph[10] = m1.nbDesParValeur[i] * i;
+            brelan=1;
+            m1.total_graph[9] = (m1.nbDesParValeur[i] * i)-i;
+            sprintf(score_graph,"%d",m1.total_graph[10]);
+            lb.afficher_texte(score_graph,20,m1.cordnum[10],sdlBlue);
+            sprintf(score_graph,"%d",m1.total_graph[9]);
+            lb.afficher_texte(score_graph,20,m1.cordnum[9],sdlBlue);
+
+            }
+        else if(m1.nbDesParValeur[i] == 5)
+            {
+            s_total = s_total + (m1.nbDesParValeur[i] * i);
+            carre = 1;
+            brelan = 1;
+            m1.total_graph[10]=(m1.nbDesParValeur[i] * i)-i;// CARRE
+            m1.total_graph[9]=(m1.nbDesParValeur[i] * i)-(2*i);// BRELAN
+            yam=1;
+            m1.total_graph[i] = m1.nbDesParValeur[i] * i;
+            sprintf(score_graph,"%d",m1.total_graph[i]);
+            lb.afficher_texte(score_graph,20,m1.cordnum[i],sdlBlue);
+
+            }
+        else
+            {
+
+            }
+        }
+        if((m1.nbDesParValeur[1]!=0 && m1.nbDesParValeur[2]!=0 && m1.nbDesParValeur[3]!=0 && m1.nbDesParValeur[4]!=0) || (m1.nbDesParValeur[2]!=0 && m1.nbDesParValeur[3]!=0 && m1.nbDesParValeur[4]!=0 && m1.nbDesParValeur[5]!=0) || (m1.nbDesParValeur[3]!=0 && m1.nbDesParValeur[4]!=0 && m1.nbDesParValeur[5]!=0 && m1.nbDesParValeur[6]!=0))//petite suite
+            {
+            psuite = 1;
+            m1.total_graph[13]=30;
+            sprintf(score_graph,"%d",m1.total_graph[13]);
+            lb.afficher_texte(score_graph,20,m1.cordnum[13],sdlBlue);
+            }
+        else
+            {
+            m1.total_graph[13]=0;
+            sprintf(score_graph,"%d",m1.total_graph[13]);
+            lb.afficher_texte(score_graph,20,m1.cordnum[13],sdlBlue);
+            }
+        if((m1.nbDesParValeur[1]!=0 && m1.nbDesParValeur[2]!=0 && m1.nbDesParValeur[3]!=0 && m1.nbDesParValeur[4]!=0 && m1.nbDesParValeur[5]!=0) || (m1.nbDesParValeur[6]!=0 && m1.nbDesParValeur[2]!=0 && m1.nbDesParValeur[3]!=0 && m1.nbDesParValeur[4]!=0 && m1.nbDesParValeur[5]!=0))//grande suite
+            {
+            gsuite = 1;
+            psuite = 1;
+            m1.total_graph[13] = 30;
+            m1.total_graph[14] = 40;
+            sprintf(score_graph,"%d",m1.total_graph[13]);
+            lb.afficher_texte(score_graph,20,m1.cordnum[13],sdlBlue);
+            sprintf(score_graph,"%d",m1.total_graph[14]);
+            lb.afficher_texte(score_graph,20,m1.cordnum[14],sdlBlue);
+            }
+        else
+            {
+            m1.total_graph[14] = 0;
+            sprintf(score_graph,"%d",m1.total_graph[14]);
+            lb.afficher_texte(score_graph,20,m1.cordnum[14],sdlBlue);
+            }
+
+        m1.total_graph[15]=s_total;
+        sprintf(score_graph,"%d",m1.total_graph[15]);
+        lb.afficher_texte(score_graph,20,m1.cordnum[15],sdlBlue);
+    if(brelan == 1 && paire != 1)// brelan
+        {
+        m1.total_graph[9] = 0;
+        sprintf(score_graph,"%d",m1.total_graph[9]);// BRELAN
+        lb.afficher_texte(score_graph,20,m1.cordnum[9],sdlBlue);
+        }
+    else
+        {
+        brelan = 0;
+        m1.total_graph[9] = 0;
+        sprintf(score_graph,"%d",m1.total_graph[9]);// BRELAN
+        lb.afficher_texte(score_graph,20,m1.cordnum[9],sdlBlue);
+        }
+    if(brelan == 1 && paire == 1 && gsuite == 0 && psuite == 0)// FULL
+        {
+        full = 1;
+        brelan = 1;
+        m1.total_graph[12] = 25;
+        sprintf(score_graph,"%d",m1.total_graph[12]);// FULL
+        lb.afficher_texte(score_graph,20,m1.cordnum[12],sdlBlue);
+        sprintf(score_graph,"%d",m1.total_graph[9]);// BRELAN
+        lb.afficher_texte(score_graph,20,m1.cordnum[9],sdlBlue);
+        }
+    else
+        {
+        full = 0;
+        m1.total_graph[12] = 0;
+        sprintf(score_graph,"%d",m1.total_graph[12]);
+        lb.afficher_texte(score_graph,20,m1.cordnum[12],sdlBlue);
+        }
+    if(yam == 1)
+        {
+        m1.total_graph[11]= 50;// YAM
+        sprintf(score_graph,"%d",m1.total_graph[11]);// YAM
+        lb.afficher_texte(score_graph,20,m1.cordnum[11],sdlBlue);
+        }
+    else
+        {
+        m1.total_graph[11] = 0;
+        sprintf(score_graph,"%d",m1.total_graph[11]);
+        lb.afficher_texte(score_graph,20,m1.cordnum[11],sdlBlue);
+        }
+    if(carre == 1 && brelan == 1)
+        {
+        sprintf(score_graph,"%d",m1.total_graph[10]);// CARRE
+        lb.afficher_texte(score_graph,20,m1.cordnum[10],sdlBlue);
+        }
+    else
+        {
+        m1.total_graph[10]= 0;
+        sprintf(score_graph,"%d",m1.total_graph[10]);
+        lb.afficher_texte(score_graph,20,m1.cordnum[10],sdlBlue);
+        }
+
+    sprintf(score_graph,"%d",s_total);
+    lb.afficher_texte(score_graph,20,m1.cordnum[7],sdlBlue);
+    lb.afficher_texte(score_graph,20,m1.cordnum[8],sdlRed);
+    return m1;
+}
+
+int Yams::RenouvelerDes(Point clic){
+    if( (clic.x > 270 && clic.x < 337) && (clic.y > 387 && clic.y < 458) )
+        {
+        return 1;
+        }
+    else
+        {
+        return 0;
+        }
+}
 
 
+Des Yams::initDes(Des dice){
+    if(dice.stat != 1)
+        {
+        dice.valeurDes = (int)rand()%6+1;
+        dice.stat = 0;
+        }
+    return dice;
+}
+
+Des Yams::afficherDes_console(Des dice){
+    return dice;
+}
+    
+void Yams::afficheDes_graph(int valeurd, Point carre){
+    if(valeurd == 1)
+        {
+        lb.afficher_image("./files/image/de1.bmp",carre);
+        }
+    else if(valeurd == 2)
+        {
+        lb.afficher_image("./files/image/de2.bmp",carre);
+        }
+    else if(valeurd == 3)
+        {
+        lb.afficher_image("./files/image/de3.bmp",carre);
+        }
+    else if(valeurd == 4)
+        {
+        lb.afficher_image("./files/image/de4.bmp",carre);
+        }
+    else if(valeurd == 5)
+        {
+        lb.afficher_image("./files/image/de5.bmp",carre);
+        }
+    else
+        {
+        lb.afficher_image("./files/image/de6.bmp",carre);
+        }
+}
